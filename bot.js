@@ -1,29 +1,15 @@
-const Discord = require('discord.js');
+import {
+    config
+} from 'dotenv'
 
-const client = new Discord.Client();
+import Bot from './Bot'
 
- 
+config()
 
-client.on('ready', () => {
+const bot = new Bot()
 
-    console.log('Bot Ready');
-
+client.on('message', msg => {
+  msg.reply('pong');
 });
 
- 
-
-client.on('message', message => {
-
-    if (message.content === 'ping') {
-
-       message.reply('pong');
-
-       }
-
-});
-
- 
-
-
-
-client.login(process.env.BOT_TOKEN);
+bot.login(process.env.DISCORD_BOT_TOKEN)
